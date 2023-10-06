@@ -1,0 +1,90 @@
+\hypertarget{classCall}{}\doxysection{Call Class Reference}
+\label{classCall}\index{Call@{Call}}
+
+
+\mbox{\hyperlink{classCall}{Call}} option payoff.  
+
+
+
+
+{\ttfamily \#include $<$call.\+hpp$>$}
+
+
+
+Inheritance diagram for Call\+:
+% FIG 0
+
+
+Collaboration diagram for Call\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCall_a3d43c23d7ab7f87ec02464ab2b342067}{Call}} (double \mbox{\hyperlink{classPayoff_a1b9f2890c88248aa3e2a0121ccbd974c}{K}}, double \mbox{\hyperlink{classPayoff_ab7b6eb8c9c0a90bff5ba48b13d225a13}{T}}, double \mbox{\hyperlink{classPayoff_af4ea694b89f95e65a78b743bb2500315}{r}}, double \mbox{\hyperlink{classPayoff_a463634da2938e98794be0666a33bfdbe}{L}})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classCall}{Call}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCall_aefbc6603f7d4428a5b7ac67cc10d8ccf}\label{classCall_aefbc6603f7d4428a5b7ac67cc10d8ccf}} 
+virtual \mbox{\hyperlink{classCall_aefbc6603f7d4428a5b7ac67cc10d8ccf}{$\sim$\+Call}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classCall}{Call}} object. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classCall_ab1f6cfa8c0997e5f9c88feeba8469224}{operator()}} (double t, double S) override
+\begin{DoxyCompactList}\small\item\em Overrides \mbox{\hyperlink{classPayoff}{Payoff}} function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classCall}{Call}} option payoff. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCall_a3d43c23d7ab7f87ec02464ab2b342067}\label{classCall_a3d43c23d7ab7f87ec02464ab2b342067}} 
+\index{Call@{Call}!Call@{Call}}
+\index{Call@{Call}!Call@{Call}}
+\doxysubsubsection{\texorpdfstring{Call()}{Call()}}
+{\footnotesize\ttfamily Call\+::\+Call (\begin{DoxyParamCaption}\item[{double}]{K,  }\item[{double}]{T,  }\item[{double}]{r,  }\item[{double}]{L }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classCall}{Call}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em K} & Strike price. \\
+\hline
+{\em T} & Time to maturity. \\
+\hline
+{\em r} & Risk free interest rate. \\
+\hline
+{\em L} & Upper bound of the domain. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCall_ab1f6cfa8c0997e5f9c88feeba8469224}\label{classCall_ab1f6cfa8c0997e5f9c88feeba8469224}} 
+\index{Call@{Call}!operator()@{operator()}}
+\index{operator()@{operator()}!Call@{Call}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double Call\+::operator() (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{double}]{S }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Overrides \mbox{\hyperlink{classPayoff}{Payoff}} function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time. \\
+\hline
+{\em S} & Asset price. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Price. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPayoff_af927b45128db08b550df451c13b07820}{Payoff}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/call.\+hpp\item 
+src/call.\+cpp\end{DoxyCompactItemize}

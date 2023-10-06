@@ -1,88 +1,81 @@
-# Error if path conains whitespace
-ifneq (1,$(words $(CURDIR)))
-$(error Containing path cannot contain whitespace: '$(CURDIR)')
-endif
+# ================================= Variables ================================
+# -------------------------------- Directories -------------------------------
+ROOTDIR    := $(PWD)
+SRCDIR     := $(ROOTDIR)/src
+TESTSDIR   := $(ROOTDIR)/tests
+INCLUDEDIR := $(ROOTDIR)/headers
+OBJDIR     := $(ROOTDIR)/obj
+BINDIR     := $(ROOTDIR)/bin
+DOCDIR     := $(ROOTDIR)/doc
 
-# ================================= Variables ================================ #
-# -------------------------------- Directories ------------------------------- #
-export ROOTDIR    = $(PWD)
-export SRCDIR     = $(ROOTDIR)/src
-export TESTSDIR   = $(ROOTDIR)/test
-export INCLUDEDIR = $(ROOTDIR)/headers
-export OBJDIR     = $(ROOTDIR)/obj
-export BINDIR     = $(ROOTDIR)/bin
-export DOCDIR     = $(ROOTDIR)/doc
+# ---------------------------------- Files ----------------------------------
+TARGET     := $(BINDIR)/black_scholes.out
 
-#--------------------------------- Compiler --------------------------------- #
+# -------------------------------- Compiler ---------------------------------
+CC     := g++
+FLAGS  := -Wall -Wextra -std=c++2a
+LDFLAGS := $(pkg-config --cflags --libs sdl2)
 
-export CC     = g++
-export CFLAGS = -I$(INCLUDEDIR) -Wall -Wextra
-
-#------------------------------------ Test ----------------------------------- #
-
-export CXXTESTGEN = cxxtestgen 
-export CXXTESTFLAGS = --error-printer
-
-export OBJSTEST = 
-
-# -------------------------------- Libraries --------------------------------- #
-
-export LIBS 	= 
-
-# ---------------------------------- Linker ---------------------------------- #
-export LD      = g++
-export LDFLAGS =
-
-# ----------------------------------- Files ---------------------------------- #
-export TARGET = $(BINDIR)/main.out
-
-# ============================= Targets and rules ============================ #
-# ------------------------------ Default target ------------------------------ #
+# ============================= Targets and rules ============================
+# ------------------------------ Default target ------------------------------
 all: $(TARGET)
 
-.PHONY: all
+.PHONY: all test coverage
 
-# ------------------------------ Directory rules ----------------------------- #
-$(OBJDIR):
-	mkdir -p $@
+# ------------------------------ Test target ---------------------------------
+test: $(TARGET) $(BINDIR)/test_call.out $(BINDIR)/test_put.out 
+	@echo "Running tests..."
 
-$(BINDIR):
-	mkdir -p $@
+$(BINDIR)/test_put.out : obj/test_put.o obj/payoff.o obj/put.o
+	@echo "Linking tests for Put..."
+	$(CC) $(FLAGS) -o $@ $^ $(LDFLAGS)
 
-# -------------------------------- Main rules -------------------------------- #
-$(TARGET): $(OBJDIR)\
-	$(BINDIR)
-	$(MAKE) -C $(SRCDIR) $(LIBS)
+obj/test_put.o : $(TESTSDIR)/test_put.cpp headers/put.hpp headers/payoff.hpp
+	@echo "Compiling test_put $<..."
+	$(CC) $(FLAGS) -c $< -o $@
 
-test: $(TARGET)
-	$(MAKE) -C $(TESTSDIR)
+$(BINDIR)/test_call.out: obj/test_call.o obj/payoff.o obj/call.o
+	@echo "Linking tests for Call..."
+	$(CC) $(FLAGS) -o $@ $^ $(LDFLAGS)
 
-run: $(TARGET)
-	$<
+obj/test_call.o: $(TESTSDIR)/test_call.cpp headers/call.hpp headers/payoff.hpp
+	@echo "Compiling test_call $<..."
+	$(CC) $(FLAGS) -c $< -o $@
 
-doc:
-	doxygen Doxyfile
+# -------------------------------- Main rules --------------------------------
+$(TARGET): obj/main.o obj/payoff.o obj/put.o obj/call.o 
+	@echo "Linking $@"
+	$(CC) $(FLAGS) -o $(TARGET) $^ $(LDFLAGS)
 
-.PHONY: $(TARGET) \
-        test \
-        run \
-        doc
+obj/main.o : $(SRCDIR)/main.cpp 
+	@echo "Compiling $@"
+	$(CC) $(FLAGS) -c $< -o $@
 
-# -------------------------------- Clean rules ------------------------------- #
-clean: clean-obj \
-       clean-bin \
-       clean-doc
+obj/payoff.o : $(SRCDIR)/payoff.cpp headers/payoff.hpp
+	@echo "Compiling $@"
+	$(CC) $(FLAGS) -c $< -o $@
+
+obj/call.o : $(SRCDIR)/call.cpp headers/call.hpp headers/payoff.hpp
+	@echo "Compiling $@"
+	$(CC) $(FLAGS) -c $< -o $@
+
+obj/put.o : $(SRCDIR)/put.cpp headers/put.hpp headers/payoff.hpp
+	@echo "Compiling $@"
+	$(CC) $(FLAGS) -c $< -o $@
+
+# -------------------------------- Clean rules -------------------------------
+clean: clean-obj clean-bin
 
 clean-obj:
-	rm -rf $(OBJDIR)
+	rm -f -v $(OBJDIR)/*.o
 
 clean-bin:
-	rm -rf $(BINDIR)
+	rm -f -v $(BINDIR)/*.out $(TEST_TARGET)
 
-clean-doc:
-	rm -rf $(DOCDIR)
+# -------------------------------- Documentation ----------------------------
+doc: Doxyfile
+	doxygen -g $<
+	@rm -f Doxyfile.bak 
 
-.PHONY: clean \
-        clean-obj \
-        clean-bin \
-        clean-doc
+doc-run: Doxyfile
+	doxygen $<

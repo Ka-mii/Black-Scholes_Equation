@@ -1,0 +1,182 @@
+\hypertarget{classPayoff}{}\doxysection{Payoff Class Reference}
+\label{classPayoff}\index{Payoff@{Payoff}}
+
+
+This class provides an interface to build payoff functions.  
+
+
+
+
+{\ttfamily \#include $<$payoff.\+hpp$>$}
+
+
+
+Inheritance diagram for Payoff\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPayoff_a2d0f17e05e543ee46547f7102ebc0f5c}{Payoff}} (double \mbox{\hyperlink{classPayoff_a1b9f2890c88248aa3e2a0121ccbd974c}{K}}, double \mbox{\hyperlink{classPayoff_ab7b6eb8c9c0a90bff5ba48b13d225a13}{T}}, double \mbox{\hyperlink{classPayoff_af4ea694b89f95e65a78b743bb2500315}{r}}, double \mbox{\hyperlink{classPayoff_a463634da2938e98794be0666a33bfdbe}{L}})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPayoff}{Payoff}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPayoff_aba04c65c340a8aac6027ed7b6e9d193a}\label{classPayoff_aba04c65c340a8aac6027ed7b6e9d193a}} 
+virtual \mbox{\hyperlink{classPayoff_aba04c65c340a8aac6027ed7b6e9d193a}{$\sim$\+Payoff}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classPayoff}{Payoff}} object. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classPayoff_af927b45128db08b550df451c13b07820}{operator()}} (double t, double S)=0
+\begin{DoxyCompactList}\small\item\em Computes the conditions of the payoff function. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPayoff_a638519e591b2282265a9fe9a30cfeade}{C}} (double t, double S)
+\begin{DoxyCompactList}\small\item\em Computes the payoff function. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPayoff_a99ad07b38e765d7f88887b656eb208f1}{get\+\_\+K}} () const
+\begin{DoxyCompactList}\small\item\em Get the Strike object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPayoff_a714649044259d324ec94a635c948dd0a}{get\+\_\+T}} () const
+\begin{DoxyCompactList}\small\item\em Get the Time To Maturity object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPayoff_a4cc61e8b68f263af853efe3df2c96128}{get\+\_\+r}} () const
+\begin{DoxyCompactList}\small\item\em Get the Risk Free Interest Rate object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPayoff_ae44d93acbabe881276df7d82e9c7fde9}{get\+\_\+L}} () const
+\begin{DoxyCompactList}\small\item\em Get the Lower Bound Domain object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPayoff_a1b9f2890c88248aa3e2a0121ccbd974c}\label{classPayoff_a1b9f2890c88248aa3e2a0121ccbd974c}} 
+double \mbox{\hyperlink{classPayoff_a1b9f2890c88248aa3e2a0121ccbd974c}{K}}
+\begin{DoxyCompactList}\small\item\em Strike price of the option. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPayoff_ab7b6eb8c9c0a90bff5ba48b13d225a13}\label{classPayoff_ab7b6eb8c9c0a90bff5ba48b13d225a13}} 
+double \mbox{\hyperlink{classPayoff_ab7b6eb8c9c0a90bff5ba48b13d225a13}{T}}
+\begin{DoxyCompactList}\small\item\em Time to maturity of the option. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPayoff_af4ea694b89f95e65a78b743bb2500315}\label{classPayoff_af4ea694b89f95e65a78b743bb2500315}} 
+double \mbox{\hyperlink{classPayoff_af4ea694b89f95e65a78b743bb2500315}{r}}
+\begin{DoxyCompactList}\small\item\em Risk free interest rate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPayoff_a463634da2938e98794be0666a33bfdbe}\label{classPayoff_a463634da2938e98794be0666a33bfdbe}} 
+double \mbox{\hyperlink{classPayoff_a463634da2938e98794be0666a33bfdbe}{L}}
+\begin{DoxyCompactList}\small\item\em Lower bound of the domain of the option. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class provides an interface to build payoff functions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPayoff_a2d0f17e05e543ee46547f7102ebc0f5c}\label{classPayoff_a2d0f17e05e543ee46547f7102ebc0f5c}} 
+\index{Payoff@{Payoff}!Payoff@{Payoff}}
+\index{Payoff@{Payoff}!Payoff@{Payoff}}
+\doxysubsubsection{\texorpdfstring{Payoff()}{Payoff()}}
+{\footnotesize\ttfamily Payoff\+::\+Payoff (\begin{DoxyParamCaption}\item[{double}]{K,  }\item[{double}]{T,  }\item[{double}]{r,  }\item[{double}]{L }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPayoff}{Payoff}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em K} & Strike price. \\
+\hline
+{\em T} & Time to maturity. \\
+\hline
+{\em r} & Risk free interest rate. \\
+\hline
+{\em L} & Lower bound of the domain. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPayoff_a638519e591b2282265a9fe9a30cfeade}\label{classPayoff_a638519e591b2282265a9fe9a30cfeade}} 
+\index{Payoff@{Payoff}!C@{C}}
+\index{C@{C}!Payoff@{Payoff}}
+\doxysubsubsection{\texorpdfstring{C()}{C()}}
+{\footnotesize\ttfamily double Payoff\+::C (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{double}]{S }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the payoff function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time. \\
+\hline
+{\em S} & Stock price. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Value of the payoff function. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPayoff_a99ad07b38e765d7f88887b656eb208f1}\label{classPayoff_a99ad07b38e765d7f88887b656eb208f1}} 
+\index{Payoff@{Payoff}!get\_K@{get\_K}}
+\index{get\_K@{get\_K}!Payoff@{Payoff}}
+\doxysubsubsection{\texorpdfstring{get\_K()}{get\_K()}}
+{\footnotesize\ttfamily double Payoff\+::get\+\_\+K (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Strike object. 
+
+\begin{DoxyReturn}{Returns}
+double Strike price. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPayoff_ae44d93acbabe881276df7d82e9c7fde9}\label{classPayoff_ae44d93acbabe881276df7d82e9c7fde9}} 
+\index{Payoff@{Payoff}!get\_L@{get\_L}}
+\index{get\_L@{get\_L}!Payoff@{Payoff}}
+\doxysubsubsection{\texorpdfstring{get\_L()}{get\_L()}}
+{\footnotesize\ttfamily double Payoff\+::get\+\_\+L (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Lower Bound Domain object. 
+
+\begin{DoxyReturn}{Returns}
+double Lower bound of the domain. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPayoff_a4cc61e8b68f263af853efe3df2c96128}\label{classPayoff_a4cc61e8b68f263af853efe3df2c96128}} 
+\index{Payoff@{Payoff}!get\_r@{get\_r}}
+\index{get\_r@{get\_r}!Payoff@{Payoff}}
+\doxysubsubsection{\texorpdfstring{get\_r()}{get\_r()}}
+{\footnotesize\ttfamily double Payoff\+::get\+\_\+r (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Risk Free Interest Rate object. 
+
+\begin{DoxyReturn}{Returns}
+double Risk free interest rate. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPayoff_a714649044259d324ec94a635c948dd0a}\label{classPayoff_a714649044259d324ec94a635c948dd0a}} 
+\index{Payoff@{Payoff}!get\_T@{get\_T}}
+\index{get\_T@{get\_T}!Payoff@{Payoff}}
+\doxysubsubsection{\texorpdfstring{get\_T()}{get\_T()}}
+{\footnotesize\ttfamily double Payoff\+::get\+\_\+T (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Time To Maturity object. 
+
+\begin{DoxyReturn}{Returns}
+double Time to maturity. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPayoff_af927b45128db08b550df451c13b07820}\label{classPayoff_af927b45128db08b550df451c13b07820}} 
+\index{Payoff@{Payoff}!operator()@{operator()}}
+\index{operator()@{operator()}!Payoff@{Payoff}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily virtual double Payoff\+::operator() (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{double}]{S }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Computes the conditions of the payoff function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time. \\
+\hline
+{\em S} & Stock price. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Value of the condition. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classPut_aff2643609215173e8e1bc253f65e0b41}{Put}}, and \mbox{\hyperlink{classCall_ab1f6cfa8c0997e5f9c88feeba8469224}{Call}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/payoff.\+hpp\item 
+src/payoff.\+cpp\end{DoxyCompactItemize}
