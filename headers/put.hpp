@@ -1,5 +1,5 @@
-#ifndef PUT_H
-#define PUT_H
+#ifndef PUT_HPP
+#define PUT_HPP
 
 #include "payoff.hpp"
 
@@ -36,4 +36,4 @@ public:
     virtual double operator()(double t, double S) override;
 };
 
-#endif //PUT_H
+#endif //PUT_HPP

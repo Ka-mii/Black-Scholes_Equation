@@ -1,5 +1,5 @@
-#ifndef PAYOFF_H
-#define PAYOFF_H
+#ifndef PAYOFF_HPP
+#define PAYOFF_HPP
 
 /**
  * @brief This class provides an interface to build payoff functions.
@@ -91,4 +91,4 @@ public:
     double get_L() const { return L; };
 };
 
-#endif //PAYOFF_H
+#endif //PAYOFF_HPP

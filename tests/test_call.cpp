@@ -9,9 +9,9 @@
 */
 void testCallPayoff_S_EqualsTo_0() {
     double K = 100.0;
-    double T = 1.0;
-    double r = 0.05;
-    double L = 150.0;
+    double T = 1;
+    double r = 0.1;
+    double L = 300.0;
 
     Call callOption(K, T, r, L);
 
@@ -28,9 +28,9 @@ void testCallPayoff_S_EqualsTo_0() {
 */
 void testCallPayoff_S_EqualsTo_L() {
     double K = 100.0;
-    double T = 1.0;
-    double r = 0.05;
-    double L = 150.0;
+    double T = 1;
+    double r = 0.1;
+    double L = 300.0;
 
     Call callOption(K, T, r, L);
 
@@ -47,10 +47,10 @@ void testCallPayoff_S_EqualsTo_L() {
 */
 void testCallPayoff_default() {
     double K = 100.0;
-    double T = 1.0;
-    double r = 0.05;
-    double L = 150.0;
-
+    double T = 1;
+    double r = 0.1;
+    double L = 300.0;
+    
     Call callOption(K, T, r, L);
 
     double t = 0.5;
