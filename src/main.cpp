@@ -4,6 +4,7 @@
 #include "../headers/payoff.hpp"
 #include "../headers/call.hpp"
 #include "../headers/put.hpp"
+#include "../headers/interface.hpp"
 
 using namespace std;
 
@@ -80,10 +81,14 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    cout << T << " " << r << " " << sigma << " " << K << " " << L << endl;
-
-    Call call_1(1, 2,3,4);
-
-    cout << call_1.get_T() << " " << call_1.get_r() << " " << sigma << " " << K << " " << L << endl;
+    try
+    {
+        runCalculation(K, T, r, L, sigma, reducedEquation, call);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << argv[0] << ": " << e.what() << '\n';
+        return 1;
+    }
 
 }
