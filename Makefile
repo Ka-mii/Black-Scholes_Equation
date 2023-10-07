@@ -43,11 +43,11 @@ obj/test_call.o: $(TESTSDIR)/test_call.cpp headers/call.hpp headers/payoff.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 # -------------------------------- Main rules --------------------------------
-$(TARGET): obj/main.o obj/payoff.o obj/put.o obj/call.o obj/interface.o
+$(TARGET): obj/main.o obj/payoff.o obj/put.o obj/call.o obj/interface.o obj/calculation.o
 	@echo "Linking $@"
 	$(CC) $(FLAGS) -o $(TARGET) $^ $(LDFLAGS)
 
-obj/main.o : $(SRCDIR)/main.cpp 
+obj/main.o : $(SRCDIR)/main.cpp headers/interface.hpp
 	@echo "Compiling $@"
 	$(CC) $(FLAGS) -c $< -o $@
 
@@ -63,7 +63,11 @@ obj/put.o : $(SRCDIR)/put.cpp headers/put.hpp headers/payoff.hpp
 	@echo "Compiling $@"
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/interface.o : $(SRCDIR)/interface.cpp headers/call.hpp headers/put.hpp headers/payoff.hpp
+obj/interface.o : $(SRCDIR)/interface.cpp headers/interface.hpp headers/call.hpp headers/put.hpp headers/payoff.hpp headers/calculation.hpp
+	@echo "Compiling $@"
+	$(CC) $(FLAGS) -c $< -o $@
+
+obj/calculation.o : $(SRCDIR)/calculation.cpp headers/calculation.hpp headers/payoff.hpp
 	@echo "Compiling $@"
 	$(CC) $(FLAGS) -c $< -o $@
 
