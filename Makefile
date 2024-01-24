@@ -43,7 +43,7 @@ obj/test_call.o: $(TESTSDIR)/test_call.cpp headers/call.hpp headers/payoff.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 # -------------------------------- Main rules --------------------------------
-$(TARGET): obj/main.o obj/payoff.o obj/put.o obj/call.o obj/interface.o obj/calculation.o
+$(TARGET): obj/main.o obj/payoff.o obj/put.o obj/call.o obj/interface.o obj/calculation.o obj/utils.o
 	@echo "Linking $@"
 	$(CC) $(FLAGS) -o $(TARGET) $^ $(LDFLAGS)
 
@@ -68,6 +68,10 @@ obj/interface.o : $(SRCDIR)/interface.cpp headers/interface.hpp headers/call.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 obj/calculation.o : $(SRCDIR)/calculation.cpp headers/calculation.hpp headers/payoff.hpp
+	@echo "Compiling $@"
+	$(CC) $(FLAGS) -c $< -o $@
+
+obj/utils.o : $(SRCDIR)/utils.cpp headers/utils.hpp
 	@echo "Compiling $@"
 	$(CC) $(FLAGS) -c $< -o $@
 
